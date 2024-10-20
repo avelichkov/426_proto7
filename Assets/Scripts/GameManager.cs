@@ -11,11 +11,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public bool isGameOver;
-
-    /* Player should be able to restart after death with space but only after death animation is over
-    but also restart should hard reset I think*/
-    public bool deathAnimOver;
-
     void Awake()
     {
         if (instance == null)
@@ -32,7 +27,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isGameOver = false;
-        deathAnimOver = false;
     }
 
     void Update()

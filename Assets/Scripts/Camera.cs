@@ -6,6 +6,7 @@ public class Camera : MonoBehaviour
 {
     //Camera offset relative to player
     [SerializeField] float _offset;
+    [SerializeField] float _smoothSpeed;
     private Transform _player;
 
     void Awake()
@@ -13,12 +14,11 @@ public class Camera : MonoBehaviour
         _player = GameObject.FindWithTag("Player").transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (!GameManager.instance.isGameOver)
-        {
-            Vector3 playerPos = _player.transform.position;
-            transform.position = new Vector3(playerPos.x,playerPos.y + _offset,-100f);
-        }
+        if (!_player) return;
+        Vector3 playerPos = _player.transform.position;
+        Vector3 targetPos = new Vector3(playerPos.x,playerPos.y + _offset,-100f);
+        transform.position = Vector3.Lerp(transform.position, targetPos, _smoothSpeed);
     }
 }

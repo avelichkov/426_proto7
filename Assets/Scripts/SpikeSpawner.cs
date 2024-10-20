@@ -18,6 +18,7 @@ public class SpikeSpawner : MonoBehaviour
 
     void Update()
     {
-        transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
+        if (GameManager.instance.isGameOver == false)
+            transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
     }
 }

@@ -13,6 +13,6 @@ public class DeathEffect : MonoBehaviour
     {
         GameManager.instance.isGameOver = true;
         yield return new WaitForSeconds(_deathAnimLength);
-        GameManager.instance.deathAnimOver = true;
+        GameManager.instance.RestartGame();
     }
 }

@@ -5,12 +5,12 @@ using UnityEngine;
 public class CheckeredSpawner : MonoBehaviour
 {
     [SerializeField] GameObject _squarePrefab;
-    [SerializeField] float _squareWidth;
     [SerializeField] int _rowNum;
     [SerializeField] int _colNum;
 
     void Start()
     {
+        float squareWidth = 4f * transform.localScale.x;
         bool on = true;
         Vector3 pos = transform.position;
         for (int row = 0; row < _rowNum; row++)
@@ -19,12 +19,12 @@ public class CheckeredSpawner : MonoBehaviour
             {
                 if (on)
                 {
-                    Vector3 newPos = transform.position + Vector3.up * row * _squareWidth + Vector3.right * col * _squareWidth;
+                    Vector3 newPos = transform.position + Vector3.up * row * squareWidth + Vector3.right * col * squareWidth;
                     Instantiate(_squarePrefab,newPos, Quaternion.identity, this.transform);
                 }
                 on = !on;
             }
+            on = !on;
         }
-
     }
 }

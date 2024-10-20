@@ -182,7 +182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: ebd7bcb7af51b7848a130e8881e347df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 121451872}
   m_Layer: 0
   m_Name: SpikeSpawner
-  m_TagString: Untagged
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.5
+  _smoothSpeed: 0.125
 --- !u!1 &847233847
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +544,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -90
   m_Sprite: {fileID: 21300000, guid: 44bf9818831f31241a7767c1805fd6eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -684,7 +685,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitch: 0
-  sounds: []
+  sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 80c9e818efadab2419f1318b3aa5b40c, type: 3}
+    volume: 0.25
+    pitch: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f3c2a2e1ffb399c408d1f64ff8f496ba, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: 1f78084a7a398804cb7c60de2b395b96, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1383481134
 Transform:
   m_ObjectHideFlags: 0
@@ -730,9 +749,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squarePrefab: {fileID: 3920593648823901575, guid: bc887f965631add41bfd80fbd5ba82f0, type: 3}
-  _squareWidth: 2
-  _rowNum: 2
-  _colNum: 2
+  _rowNum: 3
+  _colNum: 24
 --- !u!4 &1961829183
 Transform:
   m_ObjectHideFlags: 0
@@ -742,9 +760,9 @@ Transform:
   m_GameObject: {fileID: 1961829181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.304986, y: -1.0880016, z: -9.957898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -8.51, y: 20, z: -9.957898}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,8 +9,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float _gravity;
     [SerializeField] float _maxFallSpeed;
     [SerializeField] GameObject _deathEffect;
-    Rigidbody2D _rb;
-    CircleCollider2D _cc;
+    private Rigidbody2D _rb;
+    private CircleCollider2D _cc;
+    private bool winSoundPlayed = false;
 
     void Awake()
     {
@@ -40,20 +41,29 @@ public class PlayerMove : MonoBehaviour
 
     private void Jump()
     {
+        AudioManager.instance.Play("Jump");
         _rb.velocity = Vector2.zero;
         _rb.AddForce(Vector2.up * _jumpForce);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (HasTag(other,"Spike"))
+        if (other.transform.CompareTag("Spike"))
         {
-            Instantiate(_deathEffect);
+            AudioManager.instance.Play("Death");
+            GameObject instance = Instantiate(_deathEffect);
+            instance.transform.localScale = transform.localScale;
+            instance.transform.position = transform.position;
             Destroy(this.gameObject);
         }
-    }
-
-    private bool HasTag(Collider2D col, string tagName)
-    {
-        return col.transform.CompareTag(tagName);
+        else if (other.transform.CompareTag("FinishLine"))
+        {
+            if (!winSoundPlayed)
+            {
+                AudioManager.instance.Play("Victory");
+                winSoundPlayed = true;
+            }
+            GameManager.instance.isGameOver = true;
+            Jump();
+        }
     }
 }
