@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float _jumpForce;
     [SerializeField] float _gravity;
     [SerializeField] float _maxFallSpeed;
-
+    [SerializeField] GameObject _deathEffect;
     Rigidbody2D _rb;
     CircleCollider2D _cc;
 
@@ -42,5 +42,18 @@ public class PlayerMove : MonoBehaviour
     {
         _rb.velocity = Vector2.zero;
         _rb.AddForce(Vector2.up * _jumpForce);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (HasTag(other,"Spike"))
+        {
+            Instantiate(_deathEffect);
+            Destroy(this.gameObject);
+        }
+    }
+
+    private bool HasTag(Collider2D col, string tagName)
+    {
+        return col.transform.CompareTag(tagName);
     }
 }

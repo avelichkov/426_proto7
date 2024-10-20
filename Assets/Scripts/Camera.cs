@@ -15,7 +15,10 @@ public class Camera : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerPos = _player.transform.position;
-        transform.position = new Vector3(playerPos.x,playerPos.y + _offset,-100f);
+        if (!GameManager.instance.isGameOver)
+        {
+            Vector3 playerPos = _player.transform.position;
+            transform.position = new Vector3(playerPos.x,playerPos.y + _offset,-100f);
+        }
     }
 }

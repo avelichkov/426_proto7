@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpikeSpawner : MonoBehaviour
 {
     [SerializeField] GameObject _spikePrefab;
+    [SerializeField] float _moveSpeed;
 
     void Start()
     {
@@ -15,9 +16,8 @@ public class SpikeSpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
     }
 }
