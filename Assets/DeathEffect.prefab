@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b4f88e51e5be64c973b700b74e8a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathAnimLength: 2
+  _deathAnimLength: 1
 --- !u!212 &5185254668021238969
 SpriteRenderer:
   m_ObjectHideFlags: 0
