@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Spike
   - FinishLine
+  - Cyan
+  - Magenta
+  - Pink
+  - Yellow
+  - ColorChanger
   layers:
   - Default
   - TransparentFX
